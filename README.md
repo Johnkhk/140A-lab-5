@@ -50,7 +50,7 @@ provided by
 scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.interp1d.html#scipy.interpolate.interp1d).
 Here's what you'll need to do for this stage:
 
-1. Decide on a fix duration of time (say 5s).
+1. Decide on a fixed duration of time (say 5s).
 2. Set the JetBot speed to a fixed value, say 0.25. Run the JetBot forward for
    that duration of time.
 > Warning: Don't set the speed too low; that will lead to all kinds of
@@ -138,8 +138,8 @@ majority of the players have "correct" behavior. This is how we proceed:
 6. They leader team must check the `lab5/consensus/understanding/ok` topic and
    see that every team has been verified.
    1. If everything is okay, then the leader sends [a
-      message](messages/init.json) to the other teams on `lab5/<teamname>/in`
-      and each of them start moving to the start points.
+      message](messages/init.json) to all the teams (including itself) on
+      `lab5/<teamname>/in` and each of them start moving to the start points.
    2. If not, the leader publishes a [failure message](messages/fail.json) to `lab5/consensus/fail`. The TAs will then step in.
 
 ### Assumption 2: With two adversaries
