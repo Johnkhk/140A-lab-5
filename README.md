@@ -95,7 +95,7 @@ each other using MQTT communication.
 
 ### Deliverables
 
-1. A python function that publishes the team information.
+1. A python method that publishes the team information.
 2. Demonstration that you are indeed subscribed to `lab5/<own_teamname>/in`.
 
 ## Consensus
