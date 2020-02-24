@@ -3,6 +3,7 @@ from config import BROKER
 import json
 from utils import euclidean_distance
 
+
 class Communication:
     """Handles MQTT communication."""
     def __init__(self, teamname):
@@ -49,9 +50,6 @@ class Communication:
 
     def populate_understanding(self, topic, msg):
         """Fills the understanding message datastructure."""
-    
-    def leader_verify_understanding(self, topic, msg):
-        """Leader verifies the understanding"""
 
     def publish_all(self):
         self.consensus_understand()
@@ -84,3 +82,9 @@ class Communication:
         if len(self.understanding_msgs) == 3:
             ...
             # Your publishing code
+    
+    def publish_leader_verify_understanding(self, topic, msg):
+        """Leader verifies the understanding.
+        
+        Publish to teammate 'in' topics if correct, else to the consensus
+        'fail' topic."""

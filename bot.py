@@ -30,6 +30,8 @@ class Bot(object):
             if msg == 'init':
                 self.nav.move_to_start()
             # Fill in message handling for other cases in this topic.
+        
+        # Leader checks that every team is verified
         if re.match('lab5/consensus/understanding/ok', topic):
             self.comms.leader_verify_understanding(topic, msg)
                 
@@ -37,7 +39,7 @@ class Bot(object):
         """Add teammates."""
         ...
 
-    def game_loop(self):
+    def loop(self):
         self.comms.subscribe_all()
         while True:
             if (self.nav.at_goal()):
@@ -46,19 +48,9 @@ class Bot(object):
             time.sleep(1)
 
 def main():
-    with Team('pikachu') as my_team, Team('raichu', is_leader=True) as your_team:
-        my_team.subscribe_coordinates()
-        your_team.subscribe_coordinates()
-
-        my_team.subscriber.subscribe('lab5/discovery')
-        your_team.subscriber.subscribe('lab5/discovery')
-        while True:
-            my_team.publish_discovery()
-            my_team.consensus_understand()
-            
-            your_team.publish_discovery()
-            your_team.consensus_understand()            
-            time.sleep(1)
+    bot = Bot('pikachu', False)
+    bot.loop()
+    
 
 
 if __name__ == '__main__':

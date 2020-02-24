@@ -140,7 +140,7 @@ majority of the players have "correct" behavior. This is how we proceed:
    1. If everything is okay, then the leader sends [a
       message](messages/init.json) to the other teams on `lab5/<teamname>/in`
       and each of them start moving to the start points.
-   2. If not, the TAs step in and diagnose the faulty parts.
+   2. If not, the leader publishes a [failure message](messages/fail.json) to `lab5/consensus/fail`. The TAs will then step in.
 
 ### Assumption 2: With two adversaries
 
