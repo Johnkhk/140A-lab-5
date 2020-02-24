@@ -41,17 +41,14 @@ Perform the following steps for the setup stage.
 
 For the subsequent stages, you'll need to know where exactly your JetBot is in
 the Relay Race World. The TAs will define a frame of reference for that world.
-If you start at (0, 0) (in inches/meters) and you move with a speed of 0.4
+If you start at (0, 0) (in inches/meters) and you move with a speed of 0.2
 (JetBot speed) along the x-axis, where will you be? That's exactly the kind of
-questions you're looking to answer in this stage. We will use [linear
-interpolation](https://en.wikipedia.org/wiki/Linear_interpolation) to achieve
-this. You can write your own linear interpolation function or use the [utility
-provided by
-scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.interp1d.html#scipy.interpolate.interp1d).
+questions you're looking to answer in this stage.
+
 Here's what you'll need to do for this stage:
 
 1. Decide on a fix duration of time (say 5s).
-2. Set the JetBot speed to a fixed value, say 0.25. Run the JetBot forward for
+2. Set the JetBot speed to a fixed value, say 0.2. Run the JetBot forward for
    that duration of time.
 > Warning: Don't set the speed too low; that will lead to all kinds of
 > calibration problems.
@@ -200,7 +197,10 @@ Finally! The JetBots are at the three starting points. This proceeds as follows:
 
 ## Post-processing
 
-The teams read (subscribe) the data from `lab5/race/path` and visualize it. 
-(To be completed by Mudit)
+1. Publish the data onto a topic
+2. Each team visualizes the data in their respective browsers.
 
-
+### Deliverables
+1. Entire data getting published to topics.
+2. Visualizing the coordinates using a javascript library
+      Example Code : https://leafletjs.com/examples/crs-simple/crs-simple.html
