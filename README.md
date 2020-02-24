@@ -153,11 +153,11 @@ some teams. They will publish incorrect distance calculations.
 ### Deliverables
 
 1. A python function that calulates the euclidean distance between two points.
-2. A python function that uses the above function to calculate the distance
-   between the pit-stops and starting points.
+2. A python method that uses the above function to calculate the distance
+   between the pit-stops and starting points, and publishes this.
 3. Demonstration of correct message publishing and subscribing.
-4. A python function that verifies the distance calulations against their own calculations.
-5. A python function that does the verification (as done by the leader).
+4. A python method that verifies the distance calulations against their own calculations.
+5. A python method that does the verification (as done by the leader).
    
 ### Checkpoints
 
