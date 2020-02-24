@@ -33,7 +33,7 @@ Perform the following steps for the setup stage.
 
 ### Deliverables
 
-1. The lab 5 repo copid to your JetBot.
+1. The lab 5 repo copied to your JetBot.
 2. Brief demonstration of your ML behaviors. Even if you couldn't get them to
    work perfectly for lab 2, you have a chance to improve them now.
 
