@@ -18,7 +18,6 @@ autonomously. The lab will be divided into five (six) stages:
 > Note: This lab will have checkpoints/deliverables corresponding to every stage
 > that must be demonstrated on the specified lab session dates.
 
-
 > Note: If the TAs find that the lab is easier or harder than expected then they
 > may increase or decrease the complexity of some of the stages (yay modularity!), so keep your
 > eyes peeled for their Piazza posts.
@@ -48,14 +47,13 @@ questions you're looking to answer in this stage.
 Here's what you'll need to do for this stage:
 
 1. Decide on a fix duration of time (say 5s).
-2. Set the JetBot speed to a fixed value, say 0.2. Run the JetBot forward for
+2. Set the JetBot speed to the fixed speed of 0.2. Run the JetBot forward for
    that duration of time.
 > Warning: Don't set the speed too low; that will lead to all kinds of
 > calibration problems.
 
 3. Measure how far the JetBot travelled with a measuring tape.
 4. Calculate the speed of the JetBot in m/s (or inches/s).
-5. Repeat 2-4 for at least 5 different JetBot speeds.
 6. Use your measurements, x =  JetBot speeds and y =  real speeds to write
    a linear interpolation function.
 > Note: Please don't use polynomial interpolation or any other fancy
