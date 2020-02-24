@@ -3,6 +3,7 @@ from config import BROKER
 import json
 from utils import euclidean_distance
 
+
 class Communication:
     """Handles MQTT communication."""
     def __init__(self, teamname):
@@ -14,7 +15,9 @@ class Communication:
         self.publisher.loop_start()
         self.subscriber.loop_start()
         self.pitstop_coords = {}
+        self.start_coords = {}
         self.understanding_msgs = {}
+        self.verified_teams = []
 
     def subscribe_all(self):
         self.subscribe_discovery()
@@ -37,7 +40,6 @@ class Communication:
         That is, lab5/consensus/understanding and
         lab5/consensus/understanding/ok topics."""
 
-
     def populate_pitstops(self, topic, msg):
         """Update pitstop information"""
         
@@ -45,13 +47,10 @@ class Communication:
         n = topic[-1]
         data = json.loads(msg)
         self.start_coords[int(n)] = [data['x'], data['y']]
-        print(self.start_coords)
+        # print(self.start_coords)
 
     def populate_understanding(self, topic, msg):
         """Fills the understanding message datastructure."""
-    
-    def leader_verify_understanding(self, topic, msg):
-        """Leader verifies the understanding"""
 
     def publish_all(self):
         self.consensus_understand()
@@ -84,3 +83,28 @@ class Communication:
         if len(self.understanding_msgs) == 3:
             ...
             # Your publishing code
+
+
+class LeaderCommunication(Communication):
+    def subscribe_all(self):
+        super().subscribe_all()
+        self.subscribe_race_go()
+
+    def subscribe_race_go(self):
+        self.subscriber.subscribe('lab5/race/go')
+
+    def verify_understanding(self, topic, msg, teammates):
+        """Leader verifies the understanding.
+        
+        Publish to teammate 'in' topics if correct, else to the consensus
+        'fail' topic."""
+        data = json.loads(msg)
+        for k in data['verified']:
+            if k not in self.verified_teams:
+                self.verified_teams.append(k)
+        
+        # Add rest of the logic/code here
+
+    
+    def check_race_go(self, topic, msg, teammates):
+        """Publish the 'go1' message to teammates."""
