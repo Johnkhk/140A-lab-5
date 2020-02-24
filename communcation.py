@@ -6,8 +6,9 @@ from utils import euclidean_distance
 
 class Communication:
     """Handles MQTT communication."""
-    def __init__(self, teamname):
+    def __init__(self, teamname, is_leader):
         self.teamname = teamname
+        self.is_leader = is_leader
         self.publisher = mqtt.Client(f'{teamname}_publisher')
         self.subscriber = mqtt.Client(f'{teamname}_subscriber')
         self.publisher.connect(BROKER)
@@ -15,7 +16,9 @@ class Communication:
         self.publisher.loop_start()
         self.subscriber.loop_start()
         self.pitstop_coords = {}
+        self.start_coords = {}
         self.understanding_msgs = {}
+        self.verified_teams = []
 
     def subscribe_all(self):
         self.subscribe_discovery()
@@ -38,6 +41,8 @@ class Communication:
         That is, lab5/consensus/understanding and
         lab5/consensus/understanding/ok topics."""
 
+    def subscribe_race_go(self):
+        """Subscribes to lab5/race/go if is leader."""
 
     def populate_pitstops(self, topic, msg):
         """Update pitstop information"""
@@ -83,8 +88,11 @@ class Communication:
             ...
             # Your publishing code
     
-    def publish_leader_verify_understanding(self, topic, msg):
+    def leader_verify_understanding(self, topic, msg, teammates):
         """Leader verifies the understanding.
         
         Publish to teammate 'in' topics if correct, else to the consensus
         'fail' topic."""
+    
+    def leader_race_go(self, topic, msg, teammates):
+        """Publish the 'go1' messages to all the teammates."""

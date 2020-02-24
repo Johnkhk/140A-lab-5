@@ -169,17 +169,18 @@ Finally! The JetBots are at the three starting points. This proceeds as follows:
 
 1. The leader is subscribed to the topic `lab5/race/go`.
 2. As soon as the leader receives [a message](messages/go.json) on that topic,
-   it sends [a message](messages/go.json) to the team on start position 1 on
-   their personal topic.
-3. As soon as that team receives a message from the leader, it starts moving
+   it sends [a message](messages/go_1.json) (with the `num` field set to 1) to all its teammates to their 'in' topics.
+3. When the team on start position 1 receives a message from the leader, it starts moving
    using the road following ML behavior.
 4. It continues to move until its collision avoidance detects an obstacle (the
    next JetBot).
 > Note: there will be no other obstacles on the track, so the first obstacle to
 > be detected should be the next JetBot.
 
-5. The first JetBot then stops and sends [a message](messages/go.json) to the
-   next team. The second team repeats this.
+5. The first JetBot then stops and sends [a message](messages/go_2.json) to the
+   next team. 
+6. The second JetBot then stops and sends [a message](messages/go_3.json) to the
+   next team.
 6. The third team also does the same, except that it sends [a different message](messages/completed.json).
    to its teammates and to the topic `lab5/race/completed`.
 7. During the race, each team logs the coordinates of the points they passed
