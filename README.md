@@ -41,7 +41,7 @@ Perform the following steps for the setup stage.
 
 For the subsequent stages, you'll need to know where exactly your JetBot is in
 the Relay Race World. The TAs will define a frame of reference for that world.
-If you start at $(0, 0)$ (in inches/meters) and you move with a speed of $0.4$
+If you start at (0, 0) (in inches/meters) and you move with a speed of 0.4
 (JetBot speed) along the x-axis, where will you be? That's exactly the kind of
 questions you're looking to answer in this stage. We will use [linear
 interpolation](https://en.wikipedia.org/wiki/Linear_interpolation) to achieve
@@ -51,7 +51,7 @@ scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.in
 Here's what you'll need to do for this stage:
 
 1. Decide on a fix duration of time (say 5s).
-2. Set the JetBot speed to a fixed value, say $0.25$. Run the JetBot forward for
+2. Set the JetBot speed to a fixed value, say 0.25. Run the JetBot forward for
    that duration of time.
 > Warning: Don't set the speed too low; that will lead to all kinds of
 > calibration problems.
@@ -59,13 +59,13 @@ Here's what you'll need to do for this stage:
 3. Measure how far the JetBot travelled with a measuring tape.
 4. Calculate the speed of the JetBot in m/s (or inches/s).
 5. Repeat 2-4 for at least 5 different JetBot speeds.
-6. Use your measurements, $x = $ JetBot speeds and $y = $ real speeds to write
+6. Use your measurements, x =  JetBot speeds and y =  real speeds to write
    a linear interpolation function.
 > Note: Please don't use polynomial interpolation or any other fancy
 > interpolation strategies; we want to keep things simple and easy to evaluate.
 
 We will also need similar interpolation for (in-place) rotation. But to begin,
-you can just find out how long you need to rotate for at, say $0.4$ (JetBot)
+you can just find out how long you need to rotate for at, say 0.4 (JetBot)
 speed to do a 90 degree turn. The TAs will decide later on whether or not you
 need to do interpolation for rotation too.
 
@@ -76,8 +76,8 @@ need to do interpolation for rotation too.
 2. A python function that rotates the JetBot by 90 degrees.
    
 ### Checkpoints
-1. You should be able to demonstrate commands like "go to $(1, 2)$ assuming that
-   you are at $(-1, 3)$."
+1. You should be able to demonstrate commands like "go to (1, 2) assuming that
+   you are at (-1, 3)."
 
 ## Discovery
 
