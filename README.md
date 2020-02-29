@@ -200,12 +200,83 @@ Finally! The JetBots are at the three starting points. This proceeds as follows:
 
 1. A successful run-through of the race.
 
+
 ## Post-processing
 
-1. Publish the data onto a topic
-2. Each team visualizes the data in their respective browsers.
+The key objective of post-processing is to visualize the path that was transversed by the bots.
+The aggregated data will be sent to a REST server and be stored on the rest server.
+The three teams collaborating for the race will be when interacting with the rest server, getting the data
+and visualizing it in the browser using a javascript library.
 
-### Deliverables
-1. Entire data getting published to topics.
-2. Visualizing the coordinates using a javascript library
-      Example Code : https://leafletjs.com/examples/crs-simple/crs-simple.html
+The code for visualization is given below.
+
+```html
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Canvas Tile Map</title>
+		<style>
+			#canvas{
+				border: 0px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" height="400px" width="800px"></canvas>
+		<script>
+			var canvas = document.getElementById("canvas");
+			var context = canvas.getContext("2d");
+			var mapArray=[
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0],	
+				[0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+			];
+
+			var path = new Image();
+			var background = new Image();
+
+			path.src= '/home/muditj/Desktop/path.png'; // Add the appropriate png file
+			background.src = '/home/muditj/Desktop/background.png'; // Add the appropriate png file
+
+			var posX=0;
+			var posY = 0;
+
+			path.onload = function (){
+			background.onload = function (){
+			for(var i=0; i < mapArray.length; i++){
+				for(var j=0; j < mapArray[i].length; j++){
+					if(mapArray[i][j]==0){
+						context.drawImage(path,posX, posY, 25, 25);
+					}
+					if(mapArray[i][j]==0){
+						context.drawImage(background,posX,posY,25,25);
+					}
+					posX+=25;
+				}
+				posY+=25;
+				posX=0;
+			}
+		}
+	}
+
+
+		</script>
+	</body>
+</html>
+```
+
+Note: Right now the code written translates an 8m * 4m track into 800 * 400 pixels on the browser. The track is plotted with a granularity of 25cms.
