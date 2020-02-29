@@ -38,41 +38,19 @@ Perform the following steps for the setup stage.
 
 ## Pre-processing
 
-For the subsequent stages, you'll need to know where exactly your JetBot is in
-the Relay Race World. The TAs will define a frame of reference for that world.
-If you start at (0, 0) (in inches/meters) and you move with a speed of 0.2
-(JetBot speed) along the x-axis, where will you be? That's exactly the kind of
-questions you're looking to answer in this stage.
+The main objective of the pre-processing step is to come up with a frame of reference that will be used for navigation.
+In subsequent steps, as you delve deeper into the problem, you will be required to know the position of the bot in a defined coordinate system.
+You will also be required to extrapolate the position of the bot given that it has travelled in a certain direction with a certain velocity. The measurement will be done in m/s and cm/s. The speed that will be used on the bot is 0.2 which is approximately 25cm/s.
+However, you are expected to calculate this for your specific JetBots since there may be variability between them. Similar calibration can also be done for the angular movement as well, however, whether you will be required to calibrate for angular movement will be intimated later depending on the complexity and the progress everyone is making.
 
-Here's what you'll need to do for this stage:
-
-1. Decide on a fix duration of time (say 5s).
-2. Set the JetBot speed to the fixed speed of 0.2. Run the JetBot forward for
-   that duration of time.
-> Warning: Don't set the speed too low; that will lead to all kinds of
-> calibration problems.
-
-3. Measure how far the JetBot travelled with a measuring tape.
-4. Calculate the speed of the JetBot in m/s (or inches/s).
-6. Use your measurements, x =  JetBot speeds and y =  real speeds to write
-   a linear interpolation function.
-> Note: Please don't use polynomial interpolation or any other fancy
-> interpolation strategies; we want to keep things simple and easy to evaluate.
-
-We will also need similar interpolation for (in-place) rotation. But to begin,
-you can just find out how long you need to rotate for at, say 0.4 (JetBot)
-speed to do a 90 degree turn. The TAs will decide later on whether or not you
-need to do interpolation for rotation too.
+The pit-stops where the three bots are placed will be demarcated in the space. The students will be required to calculate the coordinates of the pit-stops and start points and configure their bots to go to the start points from the pit-stops.
 
 ### Deliverables
+1. A python function/method to make the bot go to point B, given that the position of self is known.
 
-1. A python function that performs linear interpolation of JetBot speeds
-   correctly.
-2. A python function that rotates the JetBot by 90 degrees.
-   
 ### Checkpoints
-1. You should be able to demonstrate commands like "go to (1, 2) assuming that
-   you are at (-1, 3)."
+1. Configure bot to go to start point from pitstop
+
 
 ## Discovery
 
@@ -248,9 +226,11 @@ The code for visualization is given below.
 
 			var path = new Image();
 			var background = new Image();
-
-			path.src= '/home/muditj/Desktop/path.png'; // Add the appropriate png file
-			background.src = '/home/muditj/Desktop/background.png'; // Add the appropriate png file
+			
+			// Add the appropriate png file
+			path.src= '/home/muditj/Desktop/path.png';
+			// Add the appropriate png file
+			background.src = '/home/muditj/Desktop/background.png';
 
 			var posX=0;
 			var posY = 0;
