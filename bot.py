@@ -22,7 +22,7 @@ class Bot:
         msg = str(msg.payload.decode('utf-8', 'ignore'))
 
         if re.match('lab5/discovery', topic):
-            self.comms.add_teammate(topic, msg)
+            self.add_teammate(topic, msg)
         
         if re.match('lab5/consensus/pitstop', topic):
             self.comms.populate_pitstops(topic, msg)
