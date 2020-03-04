@@ -28,6 +28,12 @@ class Communication:
 
     def subscribe_coordinates(self):
         """Subscribe to pit-stop and starting position coordinate topics."""
+        self.subscriber.subcribe('lab5/consensus/pitstop_coordinates/1')
+        self.subscriber.subcribe('lab5/consensus/pitstop_coordinates/2')
+        self.subscriber.subcribe('lab5/consensus/pitstop_coordinates/3')
+        self.subscriber.subscribe('lab5/consensus/start_coordinates/1')
+        self.subscriber.subscribe('lab5/consensus/start_coordinates/2')
+        self.subscriber.subscribe('lab5/consensus/start_coordinates/3')
 
     
     def subscribe_in(self):
