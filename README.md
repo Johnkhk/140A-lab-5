@@ -156,10 +156,8 @@ Finally! The JetBots are at the three starting points. This proceeds as follows:
 > Note: there will be no other obstacles on the track, so the first obstacle to
 > be detected should be the next JetBot.
 
-5. The first JetBot then stops and sends [a message](messages/go_2.json) to the
-   next team. 
-6. The second JetBot then stops and sends [a message](messages/go_3.json) to the
-   next team.
+5. The first JetBot then stops and sends [a message](messages/go_2.json) to all its teammates. The JetBot at start point 2 then starts moving.
+6. The second JetBot then stops and sends [a message](messages/go_3.json) to all its teammates. The JetBot at start point 3 then starts moving.
 6. The third team also does the same, except that it sends [a different message](messages/completed.json).
    to its teammates and to the topic `lab5/race/completed`.
 7. During the race, each team logs the coordinates of the points they passed
