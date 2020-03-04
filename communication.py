@@ -53,7 +53,7 @@ class Communication:
         """Fills the understanding message datastructure."""
 
     def publish_all(self):
-        self.consensus_understand()
+        self.publish_understanding()
         # Call all your subscriber methods here
 
     def publish_discovery(self):
